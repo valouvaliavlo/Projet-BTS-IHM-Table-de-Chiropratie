@@ -147,25 +147,41 @@ void Erreur_Temp()                          // Declaration de la fonction drawbu
 
 void DropArriere(int y)											// Declaration de la fonction pour monter le coussin avant
 {
-  myGLCD.setColor(0, 0, 0);
+  /*myGLCD.setColor(0, 0, 0);
   myGLCD.drawRoundRect(160, 0, 260, 240);
 
   myGLCD.setColor(0, 0, 0);
   myGLCD.fillRoundRect(160, 0, 260, 240);
 
-  myFiles.loadBitmap(160,160-y, 100,80,"DROP_D.raw");
+  myFiles.loadBitmap(160,160-y, 100,80,"DROP_D.raw");*/
+  
+  myGLCD.setColor(0, 0, 0);                  // Choix de la couleur pour le crayon en R, G, B : Noir
+  myGLCD.drawRoundRect(160, 0, 310, 240);          // Dessine un rectangle vide pour eviter que les images se superposent
+
+  myGLCD.setColor(0, 0, 0);                 // Choix de la couleur pour le crayon en R, G, B : Noir
+  myGLCD.fillRoundRect(160, 0, 310, 240);          // Dessine un rectangle plein pour eviter que les images se superposent
+  
+  myFiles.loadBitmap(160,203-y, 150,37,"testdrop.RAW");
+  
   imp = 0;
 }
 
 void DropAvant(int y)											// Déclaration de la fonction pour monter le coussin arriere
 {
+  //myGLCD.setColor(0, 0, 0);                  // Choix de la couleur pour le crayon en R, G, B : Noir
+ // myGLCD.drawRoundRect(0, 0, 100, 240);          // Dessine un rectangle vide pour eviter que les images se superposent
+
+ // myGLCD.setColor(0, 0, 0);                 // Choix de la couleur pour le crayon en R, G, B : Noir
+ // myGLCD.fillRoundRect(0, 0, 100, 240);          // Dessine un rectangle plein pour eviter que les images se superposent
+
+  //myFiles.loadBitmap(0,160-y, 100, 80, "DROP_G.raw");
+  
   myGLCD.setColor(0, 0, 0);                  // Choix de la couleur pour le crayon en R, G, B : Noir
-  myGLCD.drawRoundRect(0, 0, 100, 240);          // Dessine un rectangle vide pour eviter que les images se superposent
+  myGLCD.drawRoundRect(0, 0, 150, 240);          // Dessine un rectangle vide pour eviter que les images se superposent
 
   myGLCD.setColor(0, 0, 0);                 // Choix de la couleur pour le crayon en R, G, B : Noir
-  myGLCD.fillRoundRect(0, 0, 100, 240);          // Dessine un rectangle plein pour eviter que les images se superposent
-
-  myFiles.loadBitmap(0,203-y, 100, 80, "testdrop.raw");
+  myGLCD.fillRoundRect(0, 0, 150, 240);          // Dessine un rectangle plein pour eviter que les images se superposent
+  myFiles.loadBitmap(0,203-y, 150,37,"testdrop.RAW");
 
   imp = 0;
 }
