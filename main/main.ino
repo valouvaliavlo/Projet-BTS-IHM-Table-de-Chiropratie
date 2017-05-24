@@ -165,7 +165,7 @@ void DropAvant(int y)											// Déclaration de la fonction pour monter le co
   myGLCD.setColor(0, 0, 0);                 // Choix de la couleur pour le crayon en R, G, B : Noir
   myGLCD.fillRoundRect(0, 0, 100, 240);          // Dessine un rectangle plein pour eviter que les images se superposent
 
-  myFiles.loadBitmap(0,160-y, 100, 80, "DROP_G.raw");
+  myFiles.loadBitmap(0,203-y, 100, 80, "testdrop.raw");
 
   imp = 0;
 }
