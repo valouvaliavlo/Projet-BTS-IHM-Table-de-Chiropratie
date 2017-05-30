@@ -51,12 +51,11 @@ void repo()
  myButtons.drawButtons();
  myGLCD.setBackColor(VGA_BLUE);
  myGLCD.setColor(VGA_WHITE);
- myGLCD.print("Drop",40,185);
+ myGLCD.print("Drop",47,185);
  myGLCD.print("Avant",40,210);
- myGLCD.print("Drop",190,185);
- myGLCD.print("Arriere",190,210);
+ myGLCD.print("Drop",210,185);
+ myGLCD.print("Arriere",185,210);
 
-  
 }
 
 void manipulation()
