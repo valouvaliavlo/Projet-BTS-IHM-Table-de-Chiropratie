@@ -25,7 +25,7 @@ void loop() {
     Serial.print("A5H\t5L\t12\t3,3\t24\n");
     delay(3000);
   }
-  else if(Etat.equals(String("DROP")))
+  else if(Etat.equals(String("BTN_AV")))
   {
     Serial.print("E3\n");
     delay(200);
@@ -34,13 +34,16 @@ void loop() {
       Serial.print("I"+String(i)+"\n");
       delay(500);
     }
-    delay(10000);
-    Serial.print("E12\n");
-    delay(200);
-    for(int i =0; i<50; i++)
+  }
+    else if (Etat.equals(String("BTN_AR")))
     {
-      Serial.print("I"+String(i)+"\n");
-      delay(500);
+      Serial.print("E12\n");
+      delay(200);
+      for(int i =0; i<50; i++)
+      {
+        Serial.print("I"+String(i)+"\n");
+        delay(500);
+      }
     }
   }
   
