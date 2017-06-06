@@ -146,6 +146,8 @@ void Erreur_Temp()                          // Declaration de la fonction drawbu
 
 void DropArriere(int y)											// Declaration de la fonction pour monter le coussin avant
 {
+    y*=12;
+
   /*myGLCD.setColor(0, 0, 0);
   myGLCD.drawRoundRect(160, 0, 260, 240);
 
@@ -160,13 +162,14 @@ void DropArriere(int y)											// Declaration de la fonction pour monter le c
   myGLCD.setColor(0, 0, 0);                 // Choix de la couleur pour le crayon en R, G, B : Noir
   myGLCD.fillRoundRect(160, 0, 310, 240);          // Dessine un rectangle plein pour eviter que les images se superposent
   
-  myFiles.loadBitmap(160,203-y, 150,37,"testdrop.RAW");
+  myFiles.loadBitmap(160,160-y, 150,37,"testdrop.RAW");
   
   imp = 0;
 }
 
 void DropAvant(int y)											// Déclaration de la fonction pour monter le coussin arriere
 {
+  y*=12;
   //myGLCD.setColor(0, 0, 0);                  // Choix de la couleur pour le crayon en R, G, B : Noir
  // myGLCD.drawRoundRect(0, 0, 100, 240);          // Dessine un rectangle vide pour eviter que les images se superposent
 
@@ -180,7 +183,7 @@ void DropAvant(int y)											// Déclaration de la fonction pour monter le co
 
   myGLCD.setColor(0, 0, 0);                 // Choix de la couleur pour le crayon en R, G, B : Noir
   myGLCD.fillRoundRect(0, 0, 150, 240);          // Dessine un rectangle plein pour eviter que les images se superposent
-  myFiles.loadBitmap(0,203-y, 150,37,"testdrop.RAW");
+  myFiles.loadBitmap(0,160-y, 150,37,"testdrop.RAW");
 
   imp = 0;
 }
@@ -188,7 +191,7 @@ void test()
 {
   Serial.println("INIT");
   myGLCD.clrScr();
-  myFiles.loadBitmap(20, 58, 280, 125, "init.raw");
+  myFiles.loadBitmap(45, 66, 229, 107, "init.raw");
 }
 
 void setup()													// Initialisation du programme
@@ -218,6 +221,7 @@ void setup()													// Initialisation du programme
   pressed_button = 10;
   
   drawBitmaps();												// Appel de la fonction drawButtons
+  data="E1";
 }
 
 void loop()														    // Boucle principale
@@ -264,10 +268,13 @@ void loop()														    // Boucle principale
         pressed_button = myButtons.checkButtons();
         if (pressed_button==but1)
         {
+          Serial1.print("BTN_AV\n");
           Serial.print("BTN_AV\n");
           }
         if (pressed_button==but2)
         {
+          Serial1.write("BTN_AR");
+          Serial1.write("\n");
           Serial.print("BTN_AR\n");
         }
       }
@@ -306,11 +313,11 @@ void loop()														    // Boucle principale
   }
 }
 
-void serialEvent()									// Declaration de la fonction pour ouvrir la reception de l'I2C
+void serialEvent1()									// Declaration de la fonction pour ouvrir la reception serie
 {
-  while (Serial.available())                  // Boucle tant que la reception est active
+  while (Serial1.available())                  // Boucle tant que la reception est active
   {
-    char in = (char)Serial.read(); //
+    char in = (char)Serial1.read(); //
     if(in =='\n') break;           //Si on recoit le caractere de fin, on sort de la boucle
     else data += in;               //On concatene un string avec les donnés reçus
   }
